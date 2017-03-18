@@ -2,7 +2,7 @@
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 
-namespace ConstructorPC
+namespace ConstructorPC.model
 {
     class ConnectionFactory
     {

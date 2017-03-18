@@ -2,10 +2,11 @@
 using System.Data.Common;
 using MySql.Data.MySqlClient;
 using ConstructorPC.dao.api;
+using ConstructorPC.model;
 
 namespace ConstructorPC.dao.impl.MySql
 {
-    public abstract class AbstractDao<T, PK> : GenericDao<T, PK>
+    public abstract class AbstractDao<T, PK> : IGenericDao<T, PK>
     {
         protected abstract string getInsertQuery();
         protected abstract string getSelectByIdQuery();

@@ -3,14 +3,14 @@ using ConstructorPC.dao.api;
 
 namespace ConstructorPC.dao.impl.MySql
 {
-    class MySqlDaoFactory : DaoFactory
+    class MySqlDaoFactory : AbstractDaoFactory
     {
         public override IBuildDao getBuildDao()
         {
             throw new NotImplementedException();
         }
 
-        public override GenericDao<string, int> getCategoryDao()
+        public override IGenericDao<string, int> getCategoryDao()
         {
             return new CategoryDao();
         }
@@ -35,7 +35,7 @@ namespace ConstructorPC.dao.impl.MySql
             return new InterfaceDao();
         }
 
-        public override GenericDao<string, int> getManufacturerDao()
+        public override IGenericDao<string, int> getManufacturerDao()
         {
             return new ManufacturerDao();
         }

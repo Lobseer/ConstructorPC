@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ConstructorPC.dao.api
 {
-    public interface IRamDao : GenericDao<Ram, int>
+    public interface IRamDao : IGenericDao<Ram, int>
     {
 
     }

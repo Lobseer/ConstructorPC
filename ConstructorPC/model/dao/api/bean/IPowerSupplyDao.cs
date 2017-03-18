@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ConstructorPC.dao.api
 {
-    public interface IPowerSupplyDao : GenericDao<PowerSupply, int>
+    public interface IPowerSupplyDao : IGenericDao<PowerSupply, int>
     {
 
     }

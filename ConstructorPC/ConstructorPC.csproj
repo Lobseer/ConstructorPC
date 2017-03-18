@@ -60,23 +60,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="dao\api\bean\IBuildDao.cs" />
-    <Compile Include="dao\api\bean\IGraphicCardDao.cs" />
-    <Compile Include="dao\api\bean\IRamDao.cs" />
-    <Compile Include="dao\api\bean\IInterfaceDao.cs" />
-    <Compile Include="dao\api\bean\IRomDao.cs" />
-    <Compile Include="dao\api\bean\IPowerSupplyDao.cs" />
-    <Compile Include="dao\api\bean\ICpuDao.cs" />
-    <Compile Include="dao\impl\MySql\bean\CategoryDao.cs" />
-    <Compile Include="dao\impl\MySql\bean\ManufacturerDao.cs" />
-    <Compile Include="dao\impl\MySql\bean\InterfaceDao.cs" />
-    <Compile Include="dao\impl\MySql\bean\CpuDao.cs" />
-    <Compile Include="dao\impl\MySql\bean\RamDao.cs" />
-    <Compile Include="dao\impl\MySql\bean\HddDao.cs" />
-    <Compile Include="dao\impl\MySql\bean\GraphicCardDao.cs" />
-    <Compile Include="dao\impl\MySql\bean\PowerSupplyDao.cs" />
-    <Compile Include="model\InterfaceType.cs" />
-    <Compile Include="service\Build.cs" />
+    <Compile Include="model\dao\api\bean\IBuildDao.cs" />
+    <Compile Include="model\dao\api\bean\IGraphicCardDao.cs" />
+    <Compile Include="model\dao\api\bean\IRamDao.cs" />
+    <Compile Include="model\dao\api\bean\IInterfaceDao.cs" />
+    <Compile Include="model\dao\api\bean\IRomDao.cs" />
+    <Compile Include="model\dao\api\bean\IPowerSupplyDao.cs" />
+    <Compile Include="model\dao\api\bean\ICpuDao.cs" />
+    <Compile Include="model\dao\impl\MySql\bean\CategoryDao.cs" />
+    <Compile Include="model\dao\impl\MySql\bean\ManufacturerDao.cs" />
+    <Compile Include="model\dao\impl\MySql\bean\InterfaceDao.cs" />
+    <Compile Include="model\dao\impl\MySql\bean\CpuDao.cs" />
+    <Compile Include="model\dao\impl\MySql\bean\RamDao.cs" />
+    <Compile Include="model\dao\impl\MySql\bean\HddDao.cs" />
+    <Compile Include="model\dao\impl\MySql\bean\GraphicCardDao.cs" />
+    <Compile Include="model\dao\impl\MySql\bean\PowerSupplyDao.cs" />
+    <Compile Include="beans\InterfaceType.cs" />
+    <Compile Include="beans\Build.cs" />
     <Compile Include="service\NotifyPropertyChanged.cs" />
     <Compile Include="service\ProductsViewModel.cs" />
     <Compile Include="service\RelayCommand.cs" />
@@ -98,13 +98,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="service\ConnectionFactory.cs" />
-    <Compile Include="dao\api\DaoFactory.cs" />
-    <Compile Include="dao\api\GenericDao.cs" />
-    <Compile Include="dao\api\bean\IMotherboardDao.cs" />
-    <Compile Include="dao\impl\MySql\AbstractDao.cs" />
-    <Compile Include="dao\impl\MySql\bean\MotherboardDao.cs" />
-    <Compile Include="dao\impl\MySql\MySqlDaoFactory.cs" />
+    <Compile Include="model\ConnectionFactory.cs" />
+    <Compile Include="model\dao\api\AbstractDaoFactory.cs" />
+    <Compile Include="model\dao\api\IGenericDao.cs" />
+    <Compile Include="model\dao\api\bean\IMotherboardDao.cs" />
+    <Compile Include="model\dao\impl\MySql\AbstractDao.cs" />
+    <Compile Include="model\dao\impl\MySql\bean\MotherboardDao.cs" />
+    <Compile Include="model\dao\impl\MySql\MySqlDaoFactory.cs" />
     <Compile Include="view\pages\pgProduct.xaml.cs">
       <DependentUpon>pgProduct.xaml</DependentUpon>
     </Compile>
@@ -149,14 +149,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="model\Motherboard.cs" />
-    <Compile Include="model\GraphicCard.cs" />
-    <Compile Include="model\PowerSupply.cs" />
-    <Compile Include="model\Cpu.cs" />
-    <Compile Include="model\Product.cs" />
-    <Compile Include="model\Ram.cs" />
-    <Compile Include="model\Hdd.cs" />
-    <Compile Include="dao\PersistException.cs" />
+    <Compile Include="beans\Motherboard.cs" />
+    <Compile Include="beans\GraphicCard.cs" />
+    <Compile Include="beans\PowerSupply.cs" />
+    <Compile Include="beans\Cpu.cs" />
+    <Compile Include="beans\Product.cs" />
+    <Compile Include="beans\Ram.cs" />
+    <Compile Include="beans\Hdd.cs" />
+    <Compile Include="model\dao\PersistException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

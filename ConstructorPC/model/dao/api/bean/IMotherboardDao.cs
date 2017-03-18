@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ConstructorPC.dao.api
 {
-    public interface IMotherboardDao : GenericDao<Motherboard, int>
+    public interface IMotherboardDao : IGenericDao<Motherboard, int>
     {
 
     }

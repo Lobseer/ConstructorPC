@@ -18,7 +18,7 @@ namespace ConstructorPC.service
 {
     public class ProductsViewModel : NotifyPropertyChanged
     {
-        private DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.MY_SQL);     
+        private AbstractDaoFactory daoFactory = AbstractDaoFactory.getDAOFactory(AbstractDaoFactory.MY_SQL);     
 
         public ObservableCollection<Product> Products { get; private set; }
 

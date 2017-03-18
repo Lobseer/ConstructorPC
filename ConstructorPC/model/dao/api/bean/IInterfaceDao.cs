@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ConstructorPC.dao.api
 {
-    public interface IInterfaceDao : GenericDao<string, int>
+    public interface IInterfaceDao : IGenericDao<string, int>
     {
         List<string> SelectAllByType(InterfaceType type);
     }
