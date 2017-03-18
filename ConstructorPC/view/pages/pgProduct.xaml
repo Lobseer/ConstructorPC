@@ -1,0 +1,77 @@
+﻿<Page x:Class="ConstructorPC.view.pages.pgProduct"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ConstructorPC.view.pages"
+      xmlns:vm="clr-namespace:ConstructorPC.service"
+      mc:Ignorable="d" 
+      d:DesignHeight="536.686" d:DesignWidth="529.712"
+      Title="Product" Background="White">
+
+    <Page.Resources>
+
+        <Style TargetType="GroupBox">
+            <Setter Property="Padding" Value="5,5,5,1"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Width" Value="auto"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="0,0,0,1"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="auto"/>
+            <Setter Property="MinWidth" Value="50"/>
+            <Setter Property="Margin" Value="2,2,2,2"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        
+        <Style x:Key="disBtn">
+            <Setter Property="Button.Margin" Value="2,5,2,0"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=cbWareType, Path=SelectedIndex}" Value="-1">
+                    <Setter Property="Button.IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel Grid.Column="2" ScrollViewer.CanContentScroll="True">
+            
+            <GroupBox Header="ID" >
+                <TextBox Text="{Binding Path=TempProduct.Id, UpdateSourceTrigger=PropertyChanged}"/>
+            </GroupBox>
+
+            <GroupBox Header="Name">
+                <TextBox Text="{Binding Path=TempProduct.Name, UpdateSourceTrigger=PropertyChanged}"/>
+            </GroupBox>
+
+            <GroupBox Header="Manufacturer">
+                <ComboBox ItemsSource="{Binding Path=Manufacturers}" SelectedItem="{Binding Path=TempProduct.Manufacturer, UpdateSourceTrigger=PropertyChanged}" IsEditable="True" StaysOpenOnEdit="True"></ComboBox>
+            </GroupBox>
+
+            <GroupBox Header="Price">
+                <TextBox Text="{Binding Path=TempProduct.Price, StringFormat={}{0:C}, UpdateSourceTrigger=PropertyChanged}"/>
+            </GroupBox>
+
+            <GroupBox Header="In Stock">
+                <TextBox Text="{Binding Path=TempProduct.InStock, UpdateSourceTrigger=PropertyChanged}"/>
+            </GroupBox>
+
+            <GroupBox Header="Ware type">
+                <StackPanel>
+                    <ComboBox Name="cbWareType" ItemsSource="{Binding ProductCategories}"/>
+                    <Button Content="View" Style="{StaticResource disBtn}" Command="{Binding OpenDbViewCommand}" CommandParameter="{Binding ElementName=cbWareType, Path=SelectedItem}"/>
+                    <Button Content="To Excel" Style="{StaticResource disBtn}" Command="{Binding WriteToExcelCommand}" CommandParameter="{Binding ElementName=cbWareType, Path=SelectedItem}"/>
+                </StackPanel>
+            </GroupBox>
+
+        </StackPanel>
+    </Grid>
+</Page>

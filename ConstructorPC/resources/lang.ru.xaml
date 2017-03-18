@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <v:String x:Key="Title">Админка</v:String>
+    <v:String x:Key="btnApply">Применить</v:String>
+    <v:String x:Key="btnAdd">Добавить</v:String>
+    <v:String x:Key="btnCancel">Отменить</v:String>
+    <v:String x:Key="btnCopy">Скопировать</v:String>
+    <v:String x:Key="btnRemove">Удалить</v:String>
+    <v:String x:Key="lbFound">Найдено</v:String>
+    <v:String x:Key="lbFilter">Фильтры</v:String>
+</ResourceDictionary>
