@@ -35,12 +35,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,36 +72,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="model\dao\api\bean\IBuildDao.cs" />
-    <Compile Include="model\dao\api\bean\IGraphicCardDao.cs" />
-    <Compile Include="model\dao\api\bean\IRamDao.cs" />
-    <Compile Include="model\dao\api\bean\IInterfaceDao.cs" />
-    <Compile Include="model\dao\api\bean\IRomDao.cs" />
-    <Compile Include="model\dao\api\bean\IPowerSupplyDao.cs" />
-    <Compile Include="model\dao\api\bean\ICpuDao.cs" />
-    <Compile Include="model\dao\impl\MySql\bean\CategoryDao.cs" />
-    <Compile Include="model\dao\impl\MySql\bean\ManufacturerDao.cs" />
-    <Compile Include="model\dao\impl\MySql\bean\InterfaceDao.cs" />
-    <Compile Include="model\dao\impl\MySql\bean\CpuDao.cs" />
-    <Compile Include="model\dao\impl\MySql\bean\RamDao.cs" />
-    <Compile Include="model\dao\impl\MySql\bean\HddDao.cs" />
-    <Compile Include="model\dao\impl\MySql\bean\GraphicCardDao.cs" />
-    <Compile Include="model\dao\impl\MySql\bean\PowerSupplyDao.cs" />
-    <Compile Include="beans\InterfaceType.cs" />
-    <Compile Include="beans\Build.cs" />
+    <Compile Include="model\entity\build.cs" />
+    <Compile Include="model\entity\Category.cs" />
+    <Compile Include="model\entity\complect.cs" />
+    <Compile Include="model\entity\cpu.cs" />
+    <Compile Include="model\entity\EntityModel.cs" />
+    <Compile Include="model\entity\graphic_cards.cs" />
+    <Compile Include="model\entity\hdd.cs" />
+    <Compile Include="model\entity\Interface.cs" />
+    <Compile Include="model\entity\itf_to_ware.cs" />
+    <Compile Include="model\entity\Manufacturer.cs" />
+    <Compile Include="model\entity\motherboard.cs" />
+    <Compile Include="model\entity\order.cs" />
+    <Compile Include="model\entity\power_supplies.cs" />
+    <Compile Include="model\entity\Product.cs" />
+    <Compile Include="model\entity\ram.cs" />
+    <Compile Include="model\entity\Ware.cs" />
     <Compile Include="service\NotifyPropertyChanged.cs" />
     <Compile Include="service\ProductsViewModel.cs" />
     <Compile Include="service\RelayCommand.cs" />
     <Compile Include="service\RepExcel.cs" />
-    <Compile Include="Settings.cs" />
+    <Compile Include="service\ViewModel.cs" />
     <Compile Include="view\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="view\pages\pgAddingPage.xaml.cs">
-      <DependentUpon>pgAddingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\DbViewWindow.xaml.cs">
       <DependentUpon>DbViewWindow.xaml</DependentUpon>
@@ -99,17 +107,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="model\ConnectionFactory.cs" />
-    <Compile Include="model\dao\api\AbstractDaoFactory.cs" />
-    <Compile Include="model\dao\api\IGenericDao.cs" />
-    <Compile Include="model\dao\api\bean\IMotherboardDao.cs" />
-    <Compile Include="model\dao\impl\MySql\AbstractDao.cs" />
-    <Compile Include="model\dao\impl\MySql\bean\MotherboardDao.cs" />
-    <Compile Include="model\dao\impl\MySql\MySqlDaoFactory.cs" />
+    <Compile Include="view\pages\pgRam.xaml.cs">
+      <DependentUpon>pgRam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\pages\pgPowerSupply.xaml.cs">
+      <DependentUpon>pgPowerSupply.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\pages\pgProduct.xaml.cs">
       <DependentUpon>pgProduct.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="view\pages\pgProducts.xaml.cs">
-      <DependentUpon>pgProducts.xaml</DependentUpon>
     </Compile>
     <Page Include="resources\lang.ru.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -127,21 +132,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\pages\pgAddingPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="view\DbViewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\pages\pgRam.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\pages\pgPowerSupply.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="view\pages\pgProduct.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\pages\pgProducts.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="view\styles\InfoFormStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="view\styles\StyleBlue.xaml">
       <SubType>Designer</SubType>
@@ -149,14 +158,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="beans\Motherboard.cs" />
-    <Compile Include="beans\GraphicCard.cs" />
-    <Compile Include="beans\PowerSupply.cs" />
-    <Compile Include="beans\Cpu.cs" />
-    <Compile Include="beans\Product.cs" />
-    <Compile Include="beans\Ram.cs" />
-    <Compile Include="beans\Hdd.cs" />
-    <Compile Include="model\dao\PersistException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -174,6 +175,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

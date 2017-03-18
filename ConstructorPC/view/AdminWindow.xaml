@@ -10,46 +10,17 @@
         Title="{DynamicResource Title}" Height="600" Width="800" ResizeMode="CanResizeWithGrip" >
 
     <Window.Resources>
-        <vm:ProductsViewModel x:Key="vm"/>
-
-        <Style TargetType="GroupBox">
-            <Setter Property="Padding" Value="5,5,5,1"/>
-            <Setter Property="Margin" Value="0,0,0,10"/>
-            <Setter Property="FontSize" Value="16"/>
-        </Style>
-        <Style TargetType="TextBox">
-            <Setter Property="Width" Value="auto"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Margin" Value="0,0,0,1"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        </Style>
-        <Style TargetType="Button">
-            <Setter Property="Width" Value="auto"/>
-            <Setter Property="MinWidth" Value="50"/>
-            <Setter Property="Margin" Value="2,2,2,2"/>
-            <Setter Property="FontSize" Value="16"/>
-        </Style>
-
-        <Style x:Key="disBtn">
-            <Setter Property="Button.Margin" Value="2,5,2,0"/>
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding ElementName=cbWareType, Path=SelectedIndex}" Value="-1">
-                    <Setter Property="Button.IsEnabled" Value="False"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-
+        <ResourceDictionary Source="/view/styles/InfoFormStyle.xaml"/>
     </Window.Resources>
 
-    <Grid DataContext="{StaticResource vm}">
-        
+    <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-     
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"  MinWidth="150"/>
             <ColumnDefinition Width="auto"/>
@@ -79,17 +50,17 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="5">
-                            <TextBlock FontSize="18" Text="{Binding Path=Name, StringFormat=Name: {0}}" />
+                            <TextBlock FontSize="18" Text="{Binding Path=WareName, StringFormat=Name: {0}}" />
                             <TextBlock Text= "{Binding Path=Id, StringFormat=Id: {0}}" />
-                            <TextBlock Text= "{Binding Path=Manufacturer, StringFormat=Manufacturer: {0}}" />
                             <TextBlock Text="{Binding Path=Price, StringFormat=Price: {0:C}}" />
+                            <TextBlock Text="{Binding Path=Category.ct_name, StringFormat=Type: {0}}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </GroupBox>
 
-        <TabControl Grid.Column="4" Grid.Row="1">
+        <TabControl Grid.Column="4" Grid.Row="1" SelectionChanged="TabControl_SelectionChanged">
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -124,8 +95,8 @@
         </WrapPanel>
 
         <WrapPanel Orientation="Horizontal" Grid.Column="4" Grid.Row="2">
-            <Button Name="btnApply" Content="{DynamicResource btnApply}" Command="{Binding ApplyCommand}" DockPanel.Dock="Left" IsDefault="True"/>
-            <Button Name="btnCancel" Content="{DynamicResource btnCancel}" Command="{Binding CancelCommand}" DockPanel.Dock="Right" IsCancel="True"/>
+            <Button Name="btnApply" Content="{DynamicResource btnApply}" Command="{Binding ApplyCommand}" IsDefault="True"/>
+            <Button Name="btnCancel" Content="{DynamicResource btnCancel}" Command="{Binding CancelCommand}" IsCancel="True"/>
         </WrapPanel>
     </Grid>
 </Window>

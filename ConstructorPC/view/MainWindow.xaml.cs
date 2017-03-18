@@ -1,5 +1,4 @@
 ﻿using ConstructorPC.service;
-using ConstructorPC.beans;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,28 +16,9 @@ namespace ConstructorPC.view
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Build constructor = new Build();
-
         public MainWindow()
         {            
-            InitializeComponent();
-            doSmth();       
-        }
-
-        private void doSmth()
-        {
-            constructor.mbList = new List<Motherboard> {
-                new Motherboard { Name = "MSI M110t" },
-                new Motherboard { Name = "ASUS B115re" }
-            };
-            constructor.cpuList = new List<Cpu> {
-                new Cpu { Name = "AMD Ryzen x7" } ,
-                new Cpu { Name = "Intel Core i7 6900" }
-            };
-            //exMb.Content = constructor.mbList;
-            //exCpu.Content = constructor.cpuList;
-            lbxCpu.ItemsSource = constructor.cpuList;
-            lbxMb.ItemsSource = constructor.mbList;          
+            InitializeComponent();    
         }
 
         #region standart buttons

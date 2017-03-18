@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
+using ConstructorPC.model.entity;
 
 namespace ConstructorPC.view
 {
@@ -23,12 +24,16 @@ namespace ConstructorPC.view
     /// </summary>
     public partial class AdminWindow : Window
     {
+        private ViewModel vm;
         public AdminWindow()
         {
             InitializeComponent();
+            vm = new ViewModel();
 
+            DataContext = vm;
             Page page = new pgProduct();
-            page.DataContext = (ProductsViewModel)FindResource("vm");
+            page.DataContext = vm;
+            //page.DataContext = (ViewModel)FindResource("vm");
             frProductInfo.Navigate(page);
 
             menuLanguage.Items.Clear();
@@ -43,6 +48,35 @@ namespace ConstructorPC.view
             if (lang != null)
             {
                 App.Language = lang;
+            }
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as TabControl).SelectedIndex == 1)
+            {
+                Page page = null;
+                switch (vm.TempProduct?.Category?.ct_name ?? "")
+                {
+                    case "power_supplies":
+                        page = new pgPowerSupply();
+                        break;
+                    case "motherboard":
+                        break;
+                    case "graphic_card":
+                        break;
+                    case "cpu":
+                        break;
+                    case "ram":
+                        page = new pgRam();
+                        break;
+                    case "hdd":
+                        break;
+                    default:
+                        return;
+                }
+                page.DataContext = vm;
+                frDetailedInfo.Navigate(page);
             }
         }
     }

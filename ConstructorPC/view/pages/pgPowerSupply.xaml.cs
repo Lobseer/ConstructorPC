@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConstructorPC.service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ConstructorPC.view
+namespace ConstructorPC.view.pages
 {
-
-    public partial class DbViewWindow : Window
+    public partial class pgPowerSupply : Page
     {
-        public DbViewWindow()
+        public pgPowerSupply()
         {
             InitializeComponent();
         }
