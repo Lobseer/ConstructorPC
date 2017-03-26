@@ -42,7 +42,8 @@ namespace ConstructorPC.model.entity
             }
         }
 
-        public int? In_stock
+        [Column("in_stock")]
+        public int? InStock
         {
             get { return inStock; }
             set
@@ -104,7 +105,7 @@ namespace ConstructorPC.model.entity
         {
             Id = source.Id;
             price = source.price;
-            In_stock = source.In_stock;
+            InStock = source.InStock;
             manufacturers_id = source.manufacturers_id;
             ware_id = source.ware_id;
             Manufacturer = source.Manufacturer;

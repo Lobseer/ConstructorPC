@@ -30,4 +30,47 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="tabVert" TargetType="{x:Type TabItem}">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <ContentPresenter Content="{TemplateBinding Content}">
+                        <ContentPresenter.LayoutTransform>
+                            <RotateTransform Angle="270" />
+                        </ContentPresenter.LayoutTransform>
+                    </ContentPresenter>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Padding" Value="3" />
+    </Style>
+
+    <!--<Style TargetType="{x:Type ListViewItem}">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <ContentPresenter Content="{TemplateBinding Content}">
+                        <ContentPresenter.LayoutTransform>
+                            <RotateTransform Angle="270" />
+                        </ContentPresenter.LayoutTransform>
+                    </ContentPresenter>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Padding" Value="3" />
+    </Style>
+    
+    <ListView.View>
+        <GridView>
+            <GridViewColumn>
+                <GridViewColumn.Header>
+                    <TextBlock Text="{DynamicResource lbName}"/>
+                </GridViewColumn.Header>
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=WareName}" FontSize="20"/>
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>-->
+
 </ResourceDictionary>

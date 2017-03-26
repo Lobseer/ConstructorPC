@@ -7,6 +7,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FastReport;
+using System.IO;
+using System.Windows.Controls;
+using System.Windows.Markup;
+using ConstructorPC.view.pages;
+using System.Windows;
 
 namespace ConstructorPC.service
 {
@@ -20,29 +26,9 @@ namespace ConstructorPC.service
 
         public BindingList<Category> ProductCategories { get; private set; }
 
-        public ViewModel()
-        {
-            model = new EntityModel();
-            model.manufacturers.Load();
-            model.categories.Load();
-            model.interfaces.Load();
-            model.wares.Load();
-            model.products.Load();
+        public Page InfoPage { get; private set; }
 
-            Manufacturers = model.manufacturers.Local.ToBindingList();
-            ProductCategories = model.categories.Local.ToBindingList();
-
-            Products = new ObservableCollection<Product>(model.products.Local);
-
-            //CurrentProduct = new Product();
-            //CurrentProduct.id = 115;
-            //TempProduct.id = 228;
-
-            //ApplyCommand.Execute(null);
-
-            TempProduct = new Product();
-
-        }
+        public Page DetailedInfoPage { get; private set; }
 
         private Product currentProduct;
 
@@ -75,6 +61,27 @@ namespace ConstructorPC.service
             }
         }
 
+        public ViewModel()
+        {
+            model = new EntityModel();
+            model.manufacturers.Load();
+            model.categories.Load();
+            model.interfaces.Load();
+            model.wares.Load();
+            model.products.Load();
+
+            Manufacturers = model.manufacturers.Local.ToBindingList();
+            ProductCategories = model.categories.Local.ToBindingList();
+
+            Products = model.products.Local;
+          
+
+            InfoPage = new pgProduct();
+            InfoPage.DataContext = this;
+
+            TempProduct = new Product();
+        }
+
         #region Utility methods
 
         //private IEnumerable<object> ReadAllFrom(string tableName)
@@ -101,6 +108,66 @@ namespace ConstructorPC.service
         #endregion
 
         #region Commands
+
+        private RelayCommand saveChangesCommand;
+        public RelayCommand SaveChangesCommand
+        {
+            get
+            {
+                return saveChangesCommand ??
+                  (saveChangesCommand = new RelayCommand(obj =>
+                  {
+                      if (MessageBox.Show("Are you sure? All changes will be modificated in data base!", "Reminder", MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.Yes) == MessageBoxResult.Yes)
+                      {
+                          model.SaveChanges();
+                      }
+                  }));
+            }
+        }
+
+        private RelayCommand changeTabCommand;
+        public RelayCommand ChangeTabCommand
+        {
+            get
+            {
+                return changeTabCommand ??
+                  (changeTabCommand = new RelayCommand(obj =>
+                  {
+                      int tabIndex = (int)obj + 1;
+                      IEnumerable<Product> temp = model.products.Local.Where((p) => p.Category.id==tabIndex);
+                      Products = new ObservableCollection<Product>(temp);
+                      //Products = new ObservableCollection<Product>( model.products.Local.Where((p) => p.Category.id.Equals(tabIndex)));
+                      OnPropertyChanged("Products");
+                  }));
+            }
+        }
+
+        private RelayCommand showReportCommand;
+        public RelayCommand ShowReportCommand
+        {
+            get
+            {
+                return showReportCommand ??
+                  (showReportCommand = new RelayCommand(obj =>
+                  {
+                      Report report1 = new Report();
+                      report1.Load(@"D:\lobseer\Documents\Projects\Project C\С#\ConstructorPC\ConstructorPC\resources\FrTest.frx");
+                      //report1.Show();
+                      // prepare a report
+                      report1.Prepare();
+                      // create an instance of XAML export filter
+                      FastReport.Export.XAML.XAMLExport export = new FastReport.Export.XAML.XAMLExport();
+                      // export in xaml
+                      report1.Export(export, "result.xaml");
+                      // Создание потока для чтения выбранного XAML файла
+                      using (FileStream fs = new FileStream("result.xaml", FileMode.Open))
+                      { // Создание нового окна для графического вывода содержимого XAML файла
+                          Page pgReport = (Page)XamlReader.Load(fs);
+                          InfoPage = pgReport;
+                      }
+                  }));
+            }
+        }
 
         private RelayCommand applyCommand;
         public RelayCommand ApplyCommand
@@ -157,7 +224,7 @@ namespace ConstructorPC.service
                       if (obj != null)
                       {
                           Product product = ((obj as Product).Clone()) as Product;
-                          Products. Insert(0, product);
+                          Products.Insert(0, product);
                           CurrentProduct = product;
                       }
                   }));

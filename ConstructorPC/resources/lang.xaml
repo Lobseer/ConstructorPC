@@ -9,4 +9,17 @@
     <v:String x:Key="btnRemove">Remove</v:String>
     <v:String x:Key="lbFound">Found</v:String>
     <v:String x:Key="lbFilter">Filter</v:String>
+    <v:String x:Key="btnShowReport">Show Report</v:String>
+    <v:String x:Key="lbCategory">Category</v:String>
+    <v:String x:Key="lbManufacturer">Manufacturer</v:String>
+    <v:String x:Key="lbMotherboard">Motherboard</v:String>
+    <v:String x:Key="lbPowerSuplly">Power Suplly</v:String>
+    <v:String x:Key="lbGraphicCard">Graphic Card</v:String>
+    <v:String x:Key="lbCpu">CPU</v:String>
+    <v:String x:Key="lbRam">RAM</v:String>
+    <v:String x:Key="lbHdd">HDD</v:String>
+    <v:String x:Key="lbPrice">Price</v:String>
+    <v:String x:Key="lbName">Name</v:String>
+    <v:String x:Key="lbInStock">In Stock</v:String>
+    <v:String x:Key="btnSaveChanges">Save</v:String>
 </ResourceDictionary>

@@ -9,4 +9,5 @@
     <v:String x:Key="btnRemove">Удалить</v:String>
     <v:String x:Key="lbFound">Найдено</v:String>
     <v:String x:Key="lbFilter">Фильтры</v:String>
+    <v:String x:Key="btnShowReport">Показать отчет</v:String>
 </ResourceDictionary>

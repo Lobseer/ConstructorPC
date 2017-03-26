@@ -29,17 +29,14 @@ namespace ConstructorPC.view
         {
             InitializeComponent();
             vm = new ViewModel();
-
             DataContext = vm;
-            Page page = new pgProduct();
-            page.DataContext = vm;
-            //page.DataContext = (ViewModel)FindResource("vm");
-            frProductInfo.Navigate(page);
 
             menuLanguage.Items.Clear();
             menuLanguage.SelectionChanged += ChangeLanguageClick;
             menuLanguage.ItemsSource = App.Languages;
             menuLanguage.DisplayMemberPath = "DisplayName";
+
+            WindowState = WindowState.Maximized;
         }
 
         private void ChangeLanguageClick(object sender, EventArgs e)

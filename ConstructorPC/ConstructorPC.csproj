@@ -43,6 +43,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FastReport, Version=2017.1.23.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\FastReports\FastReport.Net Trial\FastReport.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -107,6 +111,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="model\ConnectionFactory.cs" />
+    <Compile Include="view\pages\pgFastReport.xaml.cs">
+      <DependentUpon>pgFastReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\pages\pgRam.xaml.cs">
       <DependentUpon>pgRam.xaml</DependentUpon>
     </Compile>
@@ -133,6 +140,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="view\DbViewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\pages\pgFastReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -181,6 +192,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="resources\FrTest.frx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

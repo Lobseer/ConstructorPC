@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:ConstructorPC.view"
         xmlns:vm="clr-namespace:ConstructorPC.service"
         xmlns:res="clr-namespace:ConstructorPC.Properties"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
-        Title="{DynamicResource Title}" Height="600" Width="800" ResizeMode="CanResizeWithGrip" >
+        Title="{DynamicResource Title}" Height="723.305" Width="1140.678" ResizeMode="CanResizeWithGrip" >
 
     <Window.Resources>
         <ResourceDictionary Source="/view/styles/InfoFormStyle.xaml"/>
@@ -32,20 +33,185 @@
         <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Width="3" Grid.RowSpan="3"/>
         <GridSplitter Grid.Column="3" HorizontalAlignment="Stretch" Width="3" Grid.RowSpan="3"/>
 
-        <GroupBox Grid.Row="1" Header="{DynamicResource lbFilter}" >
-            <StackPanel>
-                <CheckBox x:Name="chbPs" Height="20" Content="Power Supply" />
-                <CheckBox x:Name="chbMb" Height="20" Content="Motherboard" />
-                <CheckBox x:Name="chbGc" Height="20" Content="Graphic Card"/>
-                <CheckBox x:Name="chbCpu" Height="20" Content="CPU" />
-                <CheckBox x:Name="chbRam" Height="20" Content="Ram" />
-                <CheckBox x:Name="chbRom" Height="20" Content="Rom"/>
-            </StackPanel>
-        </GroupBox>
+        <TextBlock Text="{DynamicResource lbFilter}" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <TabControl Name="tcCategory" TabStripPlacement="Left" Grid.Row="1">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding ChangeTabCommand}" CommandParameter="{Binding ElementName=tcCategory, Path=SelectedIndex}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+            <TabItem Style="{StaticResource tabVert}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="Black" />
+                        <TextBlock Text="{DynamicResource lbMotherboard}" Margin="3"/>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <StackPanel>
+                        <GroupBox Header="{DynamicResource lbManufacturer}" >
+                            <StackPanel>
+                                <CheckBox Height="20" Content="Power Supply" />
+                                <CheckBox Height="20" Content="Motherboard" />
+                                <CheckBox Height="20" Content="Graphic Card"/>
+                                <CheckBox Height="20" Content="CPU" />
+                                <CheckBox Height="20" Content="Ram" />
+                                <CheckBox Height="20" Content="Rom"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem Style="{StaticResource tabVert}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="Black" />
+                        <TextBlock Text="{DynamicResource lbPowerSuplly}" Margin="3"/>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <StackPanel>
+                        <GroupBox Header="{DynamicResource lbManufacturer}" >
+                            <StackPanel>
+                                <CheckBox Height="20" Content="Power Supply" />
+                                <CheckBox Height="20" Content="Motherboard" />
+                                <CheckBox Height="20" Content="Graphic Card"/>
+                                <CheckBox Height="20" Content="CPU" />
+                                <CheckBox Height="20" Content="Ram" />
+                                <CheckBox Height="20" Content="Rom"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem Style="{StaticResource tabVert}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="Black" />
+                        <TextBlock Text="{DynamicResource lbGraphicCard}" Margin="3"/>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <StackPanel>
+                        <GroupBox Header="{DynamicResource lbManufacturer}" >
+                            <StackPanel>
+                                <CheckBox Height="20" Content="Power Supply" />
+                                <CheckBox Height="20" Content="Motherboard" />
+                                <CheckBox Height="20" Content="Graphic Card"/>
+                                <CheckBox Height="20" Content="CPU" />
+                                <CheckBox Height="20" Content="Ram" />
+                                <CheckBox Height="20" Content="Rom"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem Style="{StaticResource tabVert}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="Black" />
+                        <TextBlock Text="{DynamicResource lbCpu}" Margin="3"/>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <StackPanel>
+                        <GroupBox Header="{DynamicResource lbManufacturer}" >
+                            <StackPanel>
+                                <CheckBox Height="20" Content="Power Supply" />
+                                <CheckBox Height="20" Content="Motherboard" />
+                                <CheckBox Height="20" Content="Graphic Card"/>
+                                <CheckBox Height="20" Content="CPU" />
+                                <CheckBox Height="20" Content="Ram" />
+                                <CheckBox Height="20" Content="Rom"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem Style="{StaticResource tabVert}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="Black" />
+                        <TextBlock Text="{DynamicResource lbRam}" Margin="3"/>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <StackPanel>
+                        <GroupBox Header="{DynamicResource lbManufacturer}" >
+                            <StackPanel>
+                                <CheckBox Height="20" Content="Power Supply" />
+                                <CheckBox Height="20" Content="Motherboard" />
+                                <CheckBox Height="20" Content="Graphic Card"/>
+                                <CheckBox Height="20" Content="CPU" />
+                                <CheckBox Height="20" Content="Ram" />
+                                <CheckBox Height="20" Content="Rom"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem Style="{StaticResource tabVert}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="Black" />
+                        <TextBlock Text="{DynamicResource lbHdd}" Margin="3"/>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <StackPanel>
+                        <GroupBox Header="{DynamicResource lbManufacturer}" >
+                            <StackPanel>
+                                <CheckBox Height="20" Content="Power Supply" />
+                                <CheckBox Height="20" Content="Motherboard" />
+                                <CheckBox Height="20" Content="Graphic Card"/>
+                                <CheckBox Height="20" Content="CPU" />
+                                <CheckBox Height="20" Content="Ram" />
+                                <CheckBox Height="20" Content="Rom"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+
+        </TabControl>
 
         <ComboBox Name="menuLanguage" Grid.Row="2"/>
 
-        <GroupBox Grid.Column="2" Grid.Row="1" Header="{DynamicResource lbFound}">
+        <ListView Grid.Column="2" Grid.Row="1" ItemsSource="{Binding Products}" SelectedItem="{Binding CurrentProduct}">
+            <ListView.View>               
+                <GridView>
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <TextBlock Text="{DynamicResource lbName}"/>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=WareName}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="ID"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Price, StringFormat={}{0:C}}" Header="{DynamicResource lbPrice}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=InStock}" Header="{DynamicResource lbInStock}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Category.ct_name}" Header="{DynamicResource lbCategory}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        <!--<GroupBox Grid.Column="2" Grid.Row="1" Header="{DynamicResource lbFound}">
             <ListBox Name="lbProducts" ItemsSource="{Binding Products}" SelectedItem="{Binding CurrentProduct}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -58,7 +224,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </GroupBox>
+        </GroupBox>-->
 
         <TabControl Grid.Column="4" Grid.Row="1" SelectionChanged="TabControl_SelectionChanged">
             <TabItem>
@@ -70,7 +236,7 @@
                 </TabItem.Header>
 
                 <TabItem.Content>
-                    <Frame Name="frProductInfo"  NavigationUIVisibility="Hidden"/>
+                    <Frame Name="frProductInfo"  NavigationUIVisibility="Hidden" Content="{Binding InfoPage}"/>
                 </TabItem.Content>
             </TabItem>
 
@@ -83,20 +249,22 @@
                 </TabItem.Header>
 
                 <TabItem.Content>
-                    <Frame Name="frDetailedInfo"  NavigationUIVisibility="Hidden"/>
+                    <Frame Name="frDetailedInfo"  NavigationUIVisibility="Hidden" Content="{Binding DetailedInfoPage}"/>
                 </TabItem.Content>
             </TabItem>
         </TabControl>
 
         <WrapPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="2">
-            <Button Name="btnAdd" Content="{DynamicResource btnAdd}" Command="{Binding AddCommand}"/>
-            <Button Name="btnCopy" Content="{DynamicResource btnCopy}" Command="{Binding CopyCommand}" CommandParameter="{Binding CurrentProduct}"/>
-            <Button Name="btnRemove" Content="{DynamicResource btnRemove}" Command="{Binding RemoveCommand}" CommandParameter="{Binding CurrentProduct}"/>
+            <Button Content="{DynamicResource btnAdd}" Command="{Binding AddCommand}"/>
+            <Button Content="{DynamicResource btnCopy}" Command="{Binding CopyCommand}" CommandParameter="{Binding CurrentProduct}"/>
+            <Button Content="{DynamicResource btnRemove}" Command="{Binding RemoveCommand}" CommandParameter="{Binding CurrentProduct}"/>
+            <Button Content="{DynamicResource btnSaveChanges}" Command="{Binding SaveChangesCommand}"/>
         </WrapPanel>
 
         <WrapPanel Orientation="Horizontal" Grid.Column="4" Grid.Row="2">
-            <Button Name="btnApply" Content="{DynamicResource btnApply}" Command="{Binding ApplyCommand}" IsDefault="True"/>
-            <Button Name="btnCancel" Content="{DynamicResource btnCancel}" Command="{Binding CancelCommand}" IsCancel="True"/>
+            <Button Content="{DynamicResource btnApply}" Command="{Binding ApplyCommand}" IsDefault="True"/>
+            <Button Content="{DynamicResource btnCancel}" Command="{Binding CancelCommand}" IsCancel="True"/>
+            <Button Content="{DynamicResource btnShowReport}" Command="{Binding ShowReportCommand}"/>
         </WrapPanel>
     </Grid>
 </Window>
