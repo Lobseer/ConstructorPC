@@ -32,13 +32,14 @@ namespace ConstructorPC.model.entity
             }
         }
 
-        public decimal? Price
+        [Column("price")]
+        public decimal? PriceProp
         {
             get { return price; }
             set
             {
                 price = value;
-                OnPropertyChanged("Price");
+                OnPropertyChanged("PriceProp");
             }
         }
 
@@ -49,7 +50,7 @@ namespace ConstructorPC.model.entity
             set
             {
                 inStock = value;
-                OnPropertyChanged("In_stock");
+                OnPropertyChanged("InStock");
             }
         }
 
@@ -104,7 +105,7 @@ namespace ConstructorPC.model.entity
         public void CopyFrom(Product source)
         {
             Id = source.Id;
-            price = source.price;
+            PriceProp = source.price;
             InStock = source.InStock;
             manufacturers_id = source.manufacturers_id;
             ware_id = source.ware_id;

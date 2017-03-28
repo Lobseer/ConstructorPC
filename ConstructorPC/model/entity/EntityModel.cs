@@ -19,7 +19,7 @@ namespace ConstructorPC.model.entity
         public virtual DbSet<hdd> hdds { get; set; }
         public virtual DbSet<Interface> interfaces { get; set; }
         public virtual DbSet<Manufacturer> manufacturers { get; set; }
-        public virtual DbSet<motherboard> motherboards { get; set; }
+        public virtual DbSet<Motherboard> motherboards { get; set; }
         public virtual DbSet<order> orders { get; set; }
         public virtual DbSet<power_supplies> power_supplies { get; set; }
         public virtual DbSet<Product> products { get; set; }
@@ -108,23 +108,23 @@ namespace ConstructorPC.model.entity
                 .HasForeignKey(e => e.manufacturers_id)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<motherboard>()
+            modelBuilder.Entity<Motherboard>()
                 .Property(e => e.mb_form_factor)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<motherboard>()
+            modelBuilder.Entity<Motherboard>()
                 .Property(e => e.mb_socket)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<motherboard>()
+            modelBuilder.Entity<Motherboard>()
                 .Property(e => e.chipset)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<motherboard>()
+            modelBuilder.Entity<Motherboard>()
                 .Property(e => e.audio_adapter)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<motherboard>()
+            modelBuilder.Entity<Motherboard>()
                 .Property(e => e.netcard)
                 .IsUnicode(false);
 

@@ -1,5 +1,6 @@
 namespace ConstructorPC.model.entity
 {
+    using service;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ namespace ConstructorPC.model.entity
     using System.Data.Entity.Spatial;
 
     [Table("pc_components.power_supplies")]
-    public partial class power_supplies
+    public partial class power_supplies : NotifyPropertyChanged
     {
         public int id { get; set; }
 

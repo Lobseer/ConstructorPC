@@ -21,5 +21,9 @@
     <v:String x:Key="lbPrice">Price</v:String>
     <v:String x:Key="lbName">Name</v:String>
     <v:String x:Key="lbInStock">In Stock</v:String>
+    <v:String x:Key="btnWriteExcel">Write to Excel</v:String>
+    <v:String x:Key="btnView">View</v:String>
     <v:String x:Key="btnSaveChanges">Save</v:String>
+    <v:String x:Key="tabDetailedInfo">Detailed Info</v:String>
+    <v:String x:Key="tabInfo">Product Info</v:String>
 </ResourceDictionary>

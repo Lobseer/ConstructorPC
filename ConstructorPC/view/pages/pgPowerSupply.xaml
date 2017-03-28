@@ -14,30 +14,35 @@
     </Page.Resources>
 
     <Grid>
-        <StackPanel Grid.Column="1" ScrollViewer.CanContentScroll="True" DataContext="{Binding CurrentProduct}">
-            <GroupBox Header="Power" >
-                <TextBox x:Name="tPower" Text="{Binding Power, UpdateSourceTrigger=PropertyChanged}"/>
-            </GroupBox>
+        <ScrollViewer Grid.Column="1">
+            <StackPanel>
+                <GroupBox Header="ID" >
+                    <TextBlock Text="{Binding id}"/>
+                </GroupBox>
+                
+                <GroupBox Header="Power" >
+                    <TextBox Text="{Binding power}"/>
+                </GroupBox>
 
-            <GroupBox Header="Efficiency">
-                <TextBox x:Name="tEfficiency" Text="{Binding Efficiency, UpdateSourceTrigger=PropertyChanged}"/>
-            </GroupBox>
+                <GroupBox Header="Efficiency">
+                    <TextBox Text="{Binding efficiency}"/>
+                </GroupBox>
 
-            <GroupBox Header="Params">
-                <StackPanel>
-                    <CheckBox x:Name="chbIsActivePfc"  Margin="0,0,0,5" Content="Is PFC Active"/>
-                    <CheckBox x:Name="chbIsModular"  Margin="0,0,0,5" Content="Is Modular"/>
-                </StackPanel>
-            </GroupBox>
+                <GroupBox Header="Params">
+                    <StackPanel>
+                        <CheckBox x:Name="chbIsActivePfc"  Margin="0,0,0,5" Content="Is PFC Active" IsChecked="{Binding pfc_modul}"/>
+                        <CheckBox x:Name="chbIsModular"  Margin="0,0,0,5" Content="Is Modular" IsChecked="{Binding modular}"/>
+                    </StackPanel>
+                </GroupBox>
 
-            <GroupBox Header="Noize level">
-                <TextBox x:Name="tNoizeLevel" Text="{Binding Power, UpdateSourceTrigger=PropertyChanged}"/>
-            </GroupBox>
+                <GroupBox Header="Noize level">
+                    <TextBox Text="{Binding noize_level}"/>
+                </GroupBox>
 
-            <GroupBox Header="Features">
-                <TextBox x:Name="tFeatures" Text="{Binding Power, UpdateSourceTrigger=PropertyChanged}"/>
-            </GroupBox>
-
-        </StackPanel>
+                <GroupBox Header="Features">
+                    <TextBox Text="{Binding ps_features}"/>
+                </GroupBox>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

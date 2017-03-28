@@ -86,7 +86,7 @@
     <Compile Include="model\entity\Interface.cs" />
     <Compile Include="model\entity\itf_to_ware.cs" />
     <Compile Include="model\entity\Manufacturer.cs" />
-    <Compile Include="model\entity\motherboard.cs" />
+    <Compile Include="model\entity\Motherboard.cs" />
     <Compile Include="model\entity\order.cs" />
     <Compile Include="model\entity\power_supplies.cs" />
     <Compile Include="model\entity\Product.cs" />
@@ -113,6 +113,18 @@
     <Compile Include="model\ConnectionFactory.cs" />
     <Compile Include="view\pages\pgFastReport.xaml.cs">
       <DependentUpon>pgFastReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\pages\pgGraphicCard.xaml.cs">
+      <DependentUpon>pgGraphicCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\pages\pgCpu.xaml.cs">
+      <DependentUpon>pgCpu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\pages\pgHdd.xaml.cs">
+      <DependentUpon>pgHdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\pages\pgMotherboard.xaml.cs">
+      <DependentUpon>pgMotherboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\pages\pgRam.xaml.cs">
       <DependentUpon>pgRam.xaml</DependentUpon>
@@ -146,6 +158,22 @@
     <Page Include="view\pages\pgFastReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\pages\pgGraphicCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\pages\pgCpu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\pages\pgHdd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\pages\pgMotherboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="view\pages\pgRam.xaml">
       <Generator>MSBuild:Compile</Generator>

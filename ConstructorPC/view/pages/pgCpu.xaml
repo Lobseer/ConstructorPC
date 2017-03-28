@@ -1,0 +1,59 @@
+﻿<Page x:Class="ConstructorPC.view.pages.pgCpu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ConstructorPC.view.pages"
+      xmlns:vm="clr-namespace:ConstructorPC.service"
+      mc:Ignorable="d" 
+      d:DesignHeight="536.686" d:DesignWidth="529.712"
+      Title="Ram" Background="White">
+
+    <Page.Resources>
+        <ResourceDictionary Source="/view/styles/InfoFormStyle.xaml"/>
+    </Page.Resources>
+
+    <Grid>
+        <ScrollViewer Grid.Column="1" >
+            <StackPanel>
+                
+                <GroupBox Header="ID" >
+                    <TextBox Text="{Binding Path=id}"/>
+                </GroupBox>
+
+                <GroupBox Header="Name" >
+                    <TextBox Text="{Binding Path=id}"/>
+                </GroupBox>
+
+                <GroupBox Header="Socket" >
+                    <TextBox Text="{Binding Path=cpu_soket}"/>
+                </GroupBox>
+
+                <GroupBox Header="Clock Rate" >
+                    <TextBox Text="{Binding Path=cpu_clock_rate}"/>
+                </GroupBox>
+
+                <GroupBox Header="Core Count" >
+                    <TextBox Text="{Binding Path=cpu_core_count}"/>
+                </GroupBox>
+
+                <GroupBox Header="Cache 1st level">
+                    <TextBox Text="{Binding Path=cpu_cache3L_size}"/>
+                </GroupBox>
+
+                <GroupBox Header="Peak Temperature">
+                    <TextBox Text="{Binding Path=cpu_peak_temeprature}"/>
+                </GroupBox>
+
+                <GroupBox Header="Max Consumed power">
+                    <TextBox Text="{Binding Path=cpu_consum_pow}"/>
+                </GroupBox>
+
+                <GroupBox Header="Params">
+                    <CheckBox x:Name="chbIFreeFactor"  Margin="0,0,0,5" Content="Free Factor"/>
+                </GroupBox>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
