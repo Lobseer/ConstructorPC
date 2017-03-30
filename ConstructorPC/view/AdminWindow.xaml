@@ -53,14 +53,13 @@
                 <TabItem.Content>
                     <StackPanel>
                         <GroupBox Header="{DynamicResource lbManufacturer}" >
-                            <StackPanel>
-                                <CheckBox Height="20" Content="Power Supply" />
-                                <CheckBox Height="20" Content="Motherboard" />
-                                <CheckBox Height="20" Content="Graphic Card"/>
-                                <CheckBox Height="20" Content="CPU" />
-                                <CheckBox Height="20" Content="Ram" />
-                                <CheckBox Height="20" Content="Rom"/>
-                            </StackPanel>
+                            <ListBox ItemsSource="{Binding Manufacturers}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding mf_name}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </GroupBox>
                     </StackPanel>
                 </TabItem.Content>
@@ -77,14 +76,13 @@
                 <TabItem.Content>
                     <StackPanel>
                         <GroupBox Header="{DynamicResource lbManufacturer}" >
-                            <StackPanel>
-                                <CheckBox Height="20" Content="Power Supply" />
-                                <CheckBox Height="20" Content="Motherboard" />
-                                <CheckBox Height="20" Content="Graphic Card"/>
-                                <CheckBox Height="20" Content="CPU" />
-                                <CheckBox Height="20" Content="Ram" />
-                                <CheckBox Height="20" Content="Rom"/>
-                            </StackPanel>
+                            <ListBox ItemsSource="{Binding Manufacturers}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding mf_name}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </GroupBox>
                     </StackPanel>
                 </TabItem.Content>
@@ -101,14 +99,13 @@
                 <TabItem.Content>
                     <StackPanel>
                         <GroupBox Header="{DynamicResource lbManufacturer}" >
-                            <StackPanel>
-                                <CheckBox Height="20" Content="Power Supply" />
-                                <CheckBox Height="20" Content="Motherboard" />
-                                <CheckBox Height="20" Content="Graphic Card"/>
-                                <CheckBox Height="20" Content="CPU" />
-                                <CheckBox Height="20" Content="Ram" />
-                                <CheckBox Height="20" Content="Rom"/>
-                            </StackPanel>
+                            <ListBox ItemsSource="{Binding Manufacturers}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding mf_name}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </GroupBox>
                     </StackPanel>
                 </TabItem.Content>
@@ -125,14 +122,13 @@
                 <TabItem.Content>
                     <StackPanel>
                         <GroupBox Header="{DynamicResource lbManufacturer}" >
-                            <StackPanel>
-                                <CheckBox Height="20" Content="Power Supply" />
-                                <CheckBox Height="20" Content="Motherboard" />
-                                <CheckBox Height="20" Content="Graphic Card"/>
-                                <CheckBox Height="20" Content="CPU" />
-                                <CheckBox Height="20" Content="Ram" />
-                                <CheckBox Height="20" Content="Rom"/>
-                            </StackPanel>
+                            <ListBox ItemsSource="{Binding Manufacturers}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding mf_name}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </GroupBox>
                     </StackPanel>
                 </TabItem.Content>
@@ -149,14 +145,13 @@
                 <TabItem.Content>
                     <StackPanel>
                         <GroupBox Header="{DynamicResource lbManufacturer}" >
-                            <StackPanel>
-                                <CheckBox Height="20" Content="Power Supply" />
-                                <CheckBox Height="20" Content="Motherboard" />
-                                <CheckBox Height="20" Content="Graphic Card"/>
-                                <CheckBox Height="20" Content="CPU" />
-                                <CheckBox Height="20" Content="Ram" />
-                                <CheckBox Height="20" Content="Rom"/>
-                            </StackPanel>
+                            <ListBox ItemsSource="{Binding Manufacturers}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding mf_name}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </GroupBox>
                     </StackPanel>
                 </TabItem.Content>
@@ -173,14 +168,13 @@
                 <TabItem.Content>
                     <StackPanel>
                         <GroupBox Header="{DynamicResource lbManufacturer}" >
-                            <StackPanel>
-                                <CheckBox Height="20" Content="Power Supply" />
-                                <CheckBox Height="20" Content="Motherboard" />
-                                <CheckBox Height="20" Content="Graphic Card"/>
-                                <CheckBox Height="20" Content="CPU" />
-                                <CheckBox Height="20" Content="Ram" />
-                                <CheckBox Height="20" Content="Rom"/>
-                            </StackPanel>
+                            <ListBox ItemsSource="{Binding Manufacturers}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding mf_name}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </GroupBox>
                     </StackPanel>
                 </TabItem.Content>
@@ -190,7 +184,7 @@
 
         <ComboBox Name="menuLanguage" Grid.Row="2"/>
 
-        <ListView Grid.Column="2" Grid.Row="1" ItemsSource="{Binding Products}" SelectedItem="{Binding CurrentProduct}">
+        <ListView Grid.Column="2" Grid.Row="1" ItemsSource="{Binding Products}" SelectedItem="{Binding CurrentProduct}" FontSize="16">
             <ListView.View>               
                 <GridView>
                     <GridViewColumn>

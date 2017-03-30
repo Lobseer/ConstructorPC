@@ -17,7 +17,7 @@
         <Grid.ColumnDefinitions>
         </Grid.ColumnDefinitions>
 
-        <DataGrid x:Name="dgView" Margin="5,5,5,5" Height="auto" Width="auto" ColumnWidth="auto" ItemsSource="{Binding WareTable}">
+        <DataGrid x:Name="dgView" Margin="5,5,5,5" Height="auto" Width="auto" ColumnWidth="auto" ItemsSource="{Binding WareTable}" FontSize="16">
             <!--vm:ProductsViewModel.DataGridDoubleClickCommand="{Binding ChoiseWareCommand}"-->
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">

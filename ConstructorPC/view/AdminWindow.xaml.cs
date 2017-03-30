@@ -59,10 +59,12 @@ namespace ConstructorPC.view
                         page = new pgPowerSupply();
                         break;
                     case "motherboard":
+                        page = new pgMotherboard();
                         break;
                     case "graphic_card":
                         break;
                     case "cpu":
+                        page = new pgCpu();
                         break;
                     case "ram":
                         page = new pgRam();

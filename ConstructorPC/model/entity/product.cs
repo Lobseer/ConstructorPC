@@ -6,7 +6,11 @@ namespace ConstructorPC.model.entity
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Runtime.Serialization;
+    using System.Xml.Serialization;
 
+    [Serializable]
+    [DataContract]
     [Table("pc_components.products")]
     public partial class Product : NotifyPropertyChanged, ICloneable
     {
@@ -22,6 +26,7 @@ namespace ConstructorPC.model.entity
         private Ware ware;
         private Manufacturer manufacturer;
 
+        [DataMember]
         public int Id
         {
             get { return id; }
@@ -32,6 +37,7 @@ namespace ConstructorPC.model.entity
             }
         }
 
+        [DataMember]
         [Column("price")]
         public decimal? PriceProp
         {
@@ -43,6 +49,7 @@ namespace ConstructorPC.model.entity
             }
         }
 
+        [DataMember]
         [Column("in_stock")]
         public int? InStock
         {
@@ -54,6 +61,7 @@ namespace ConstructorPC.model.entity
             }
         }
 
+        [DataMember]
         public Manufacturer Manufacturer
         {
             get { return manufacturer; }
@@ -75,6 +83,7 @@ namespace ConstructorPC.model.entity
             }
         }
 
+        [DataMember]
         [NotMapped]
         public string WareName
         {
@@ -84,6 +93,7 @@ namespace ConstructorPC.model.entity
             }
         }
 
+        [DataMember]
         [NotMapped]
         public Category Category
         {
@@ -93,7 +103,6 @@ namespace ConstructorPC.model.entity
                 OnPropertyChanged("Category");
             }
         }
-
 
         public int manufacturers_id { get; set; }
 

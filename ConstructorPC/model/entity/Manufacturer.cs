@@ -22,5 +22,10 @@ namespace ConstructorPC.model.entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> products { get; set; }
+
+        public override string ToString()
+        {
+            return $"{mf_name}";
+        }
     }
 }

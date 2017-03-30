@@ -1,12 +1,88 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="03/26/2017 14:11:41" ReportInfo.Modified="03/26/2017 14:22:42" ReportInfo.CreatorVersion="2017.1.23.0">
-  <Dictionary/>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="03/26/2017 14:11:41" ReportInfo.Modified="03/30/2017 22:36:49" ReportInfo.CreatorVersion="2017.1.23.0">
+  <Dictionary>
+    <XmlDataConnection Name="Connection" ConnectionString="rijcmlqmmfdjkQxfe1iwShBNGpud3yife3BFODvIdaeXSyekgPK3huN0rxe5Dbjd1VLXTsTxqdnYu16IUwnMwztKgNf4EW7yORhn6rBgSslWQosYHyjB1YotBO0lcBLv8wwFRakVOW15fShp6Gmz8pSDEVOSSs6w850j1WJ6L4j0HAzgRw=">
+      <TableDataSource Name="assembly" DataType="System.Int32" Enabled="true" TableName="assembly">
+        <Column Name="name" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="list" DataType="System.Int32" Enabled="true" TableName="list">
+        <Column Name="list_Id" DataType="System.Int32"/>
+        <Column Name="remarks_Id" DataType="System.Int32"/>
+      </TableDataSource>
+      <TableDataSource Name="item" DataType="System.Int32" Enabled="true" TableName="item">
+        <Column Name="item_Text" DataType="System.String"/>
+        <Column Name="list_Id" DataType="System.Int32"/>
+      </TableDataSource>
+      <TableDataSource Name="exception" DataType="System.Int32" Enabled="true" TableName="exception">
+        <Column Name="exception_Id" DataType="System.Int32"/>
+        <Column Name="c" DataType="System.String"/>
+        <Column Name="cref" DataType="System.String"/>
+        <Column Name="member_Id" DataType="System.Int32"/>
+      </TableDataSource>
+    </XmlDataConnection>
+    <Relation Name="summary_see" ParentDataSource="null" ChildDataSource="null" ParentColumns="summary_Id" ChildColumns="summary_Id" Enabled="true"/>
+    <Relation Name="typeparam_see" ParentDataSource="null" ChildDataSource="null" ParentColumns="typeparam_Id" ChildColumns="typeparam_Id" Enabled="true"/>
+    <Relation Name="list_item" ParentDataSource="list" ChildDataSource="item" ParentColumns="list_Id" ChildColumns="list_Id" Enabled="true"/>
+    <Relation Name="remarks_paramref" ParentDataSource="null" ChildDataSource="null" ParentColumns="remarks_Id" ChildColumns="remarks_Id" Enabled="true"/>
+    <Relation Name="remarks_list" ParentDataSource="null" ChildDataSource="list" ParentColumns="remarks_Id" ChildColumns="remarks_Id" Enabled="true"/>
+    <Relation Name="param_typeparamref" ParentDataSource="null" ChildDataSource="null" ParentColumns="param_Id" ChildColumns="param_Id" Enabled="true"/>
+    <Relation Name="returns_c" ParentDataSource="null" ChildDataSource="null" ParentColumns="returns_Id" ChildColumns="returns_Id" Enabled="true"/>
+    <Relation Name="exception_paramref" ParentDataSource="exception" ChildDataSource="null" ParentColumns="exception_Id" ChildColumns="exception_Id" Enabled="true"/>
+    <Relation Name="value_see" ParentDataSource="null" ChildDataSource="null" ParentColumns="value_Id" ChildColumns="value_Id" Enabled="true"/>
+    <Relation Name="notes_see" ParentDataSource="null" ChildDataSource="null" ParentColumns="notes_Id" ChildColumns="notes_Id" Enabled="true"/>
+    <Relation Name="member_summary" ParentDataSource="null" ChildDataSource="null" ParentColumns="member_Id" ChildColumns="member_Id" Enabled="true"/>
+    <Relation Name="member_exception" ParentDataSource="null" ChildDataSource="exception" ParentColumns="member_Id" ChildColumns="member_Id" Enabled="true"/>
+    <Relation Name="members_member" ParentDataSource="null" ChildDataSource="null" ParentColumns="members_Id" ChildColumns="members_Id" Enabled="true"/>
+  </Dictionary>
   <ReportPage Name="Page1">
-    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8"/>
-    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="28.35"/>
-    <DataBand Name="Data1" Top="74.15" Width="718.2" Height="75.6">
-      <TextObject Name="Text1" Left="113.4" Width="236.25" Height="37.8" Text="TEst fast report" Font="Arial, 22pt"/>
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Left="113.4" Top="9.45" Width="236.25" Height="28.35" Text="TEst fast report" Font="Arial, 22pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="40.13" Width="718.2" Height="28.35"/>
+    <DataBand Name="Data1" Top="70.8" Width="718.2" Height="113.4">
+      <TableObject Name="Table1" Left="18.9" Top="9.45" Width="670.95" Height="94.5">
+        <TableColumn Name="Column1" Width="134.19"/>
+        <TableColumn Name="Column2" Width="134.19"/>
+        <TableColumn Name="Column3" Width="134.19"/>
+        <TableColumn Name="Column4" Width="134.19"/>
+        <TableColumn Name="Column5" Width="134.19"/>
+        <TableRow Name="Row1">
+          <TableCell Name="Cell1" Text="[list.list_Id]"/>
+          <TableCell Name="Cell2" Text="[list.remarks_Id]"/>
+          <TableCell Name="Cell3"/>
+          <TableCell Name="Cell4"/>
+          <TableCell Name="Cell5"/>
+        </TableRow>
+        <TableRow Name="Row2">
+          <TableCell Name="Cell6"/>
+          <TableCell Name="Cell7"/>
+          <TableCell Name="Cell8"/>
+          <TableCell Name="Cell9"/>
+          <TableCell Name="Cell10"/>
+        </TableRow>
+        <TableRow Name="Row3">
+          <TableCell Name="Cell11"/>
+          <TableCell Name="Cell12"/>
+          <TableCell Name="Cell13"/>
+          <TableCell Name="Cell14"/>
+          <TableCell Name="Cell15"/>
+        </TableRow>
+        <TableRow Name="Row4">
+          <TableCell Name="Cell16"/>
+          <TableCell Name="Cell17"/>
+          <TableCell Name="Cell18"/>
+          <TableCell Name="Cell19"/>
+          <TableCell Name="Cell20"/>
+        </TableRow>
+        <TableRow Name="Row5">
+          <TableCell Name="Cell21"/>
+          <TableCell Name="Cell22"/>
+          <TableCell Name="Cell23"/>
+          <TableCell Name="Cell24"/>
+          <TableCell Name="Cell25"/>
+        </TableRow>
+      </TableObject>
     </DataBand>
-    <PageFooterBand Name="PageFooter1" Top="153.75" Width="718.2" Height="18.9"/>
+    <PageFooterBand Name="PageFooter1" Top="186.53" Width="718.2" Height="18.9"/>
   </ReportPage>
 </Report>

@@ -15,6 +15,10 @@ using ConstructorPC.view.pages;
 using System.Windows;
 using System.Reflection;
 using Microsoft.Win32;
+using System.Xml.Serialization;
+using System.Runtime.Serialization;
+using System.Xml;
+using ConstructorPC.view;
 
 namespace ConstructorPC.service
 {
@@ -100,6 +104,30 @@ namespace ConstructorPC.service
         private ram curRam;
         private hdd curHdd;
 
+        private static void Save<T>(string patch, T obj) where T : class
+        {
+            DataContractSerializer ser = new DataContractSerializer(typeof(T));
+            using (StreamWriter stringReader = new StreamWriter(patch))
+            {
+                using (XmlWriter xmlReader = XmlWriter.Create(stringReader))
+                {
+                    ser.WriteObject(xmlReader, obj);
+                }
+            }
+        }
+
+        public static void SerialiazeToXml<T>(ref T inObject, string inFileName)
+        {
+            try
+            {
+                XmlSerializer writer = new XmlSerializer(typeof(T));
+                StreamWriter file = new StreamWriter(inFileName);
+                writer.Serialize(file, inObject);
+                file.Close();
+            }
+            catch (Exception ex) { /*MessageBox.Show(ex.Message);*/ }
+        }
+
         private void LoadDetailedInfo()
         {
             if (CurrentProduct == null)
@@ -109,7 +137,7 @@ namespace ConstructorPC.service
             }
             else
             {
-                switch (CurrentProduct.Category.id)
+                switch (CurrentProduct?.Category?.id)
                 {
                     case 1:
                         DetailedInfoPage = new pgMotherboard();
@@ -281,8 +309,9 @@ namespace ConstructorPC.service
                 return showReportCommand ??
                   (showReportCommand = new RelayCommand(obj =>
                   {
+                      Save("ser.xml", Products.ToList());
                       Report report1 = new Report();
-                      report1.Load("resources/FrTest.frx");
+                      //report1.Load("resources/FrTest.frx");
                       //report1.Show();
 
                       report1.Prepare();
@@ -297,6 +326,94 @@ namespace ConstructorPC.service
                           InfoPage = pgReport;
                       }
                   }));
+            }
+        }
+
+        private RelayCommand choiseWareCommand;
+        public RelayCommand ChoiseWareCommand
+        {
+            get
+            {
+                return choiseWareCommand ??
+                    (choiseWareCommand = new RelayCommand(obj =>
+                    {
+                        if (obj != null)
+                        {
+                            Ware ware = new Ware();
+                            ware.category_id = (int)CurrentProduct?.Category?.id;
+                            switch (CurrentProduct?.Category?.id)
+                            {
+                                case 1:
+                                    Motherboard mb = obj as Motherboard;
+                                    ware.ware_id = mb.id;
+                                    break;
+                                case 2:
+                                    power_supplies ps = obj as power_supplies;
+                                    ware.ware_id = ps.id;
+                                    break;
+                                case 3:
+                                    graphic_cards gc = new graphic_cards();
+                                    ware.ware_id = gc.id;
+                                    break;
+                                case 4:
+                                    cpu cpu = new cpu();
+                                    ware.ware_id = cpu.id;
+                                    break;
+                                case 5:
+                                    ram ram = new ram();
+                                    ware.ware_id = ram.id;
+                                    break;
+                                case 6:
+                                    hdd hdd = new hdd();
+                                    ware.ware_id = hdd.id;
+                                    break;
+                            }
+
+                            CurrentProduct.Ware = ware;
+                            Application.Current.Windows[1].Close();
+                        }
+                    }));
+            }
+        }
+
+        public IEnumerable<object> WareTable { get; private set; }
+
+        private RelayCommand openDbViewCommand;
+        public RelayCommand OpenDbViewCommand
+        {
+            get
+            {
+                return openDbViewCommand ??
+                    (openDbViewCommand = new RelayCommand(obj =>
+                      {
+                          switch (CurrentProduct?.Category?.id)
+                          {
+                              case 1:
+                                  WareTable = model.motherboards.Local.ToList();
+                                  break;
+                              case 2:
+                                  WareTable = model.power_supplies.Local.ToList();
+                                  break;
+                              case 3:
+                                  WareTable = model.graphic_cards.Local.ToList();
+                                  break;
+                              case 4:
+                                  WareTable = model.cpus.Local.ToList();
+                                  break;
+                              case 5:
+                                  WareTable = model.rams.Local.ToList();
+                                  break;
+                              case 6:
+                                  WareTable = model.hdds.Local.ToList();
+                                  break;
+                          }
+
+                          Window viewTable = new DbViewWindow();
+                          viewTable.DataContext = this;
+                          viewTable.Owner = Application.Current.Windows[0];
+                          viewTable.Show();
+
+                      }));
             }
         }
 
@@ -338,6 +455,7 @@ namespace ConstructorPC.service
                   (addCommand = new RelayCommand(obj =>
                   {
                       Product product = new Product();
+                      Ware ware = new Ware();
                       Products.Insert(0, product);
                       model.products.Add(product);
                       CurrentProduct = product;
